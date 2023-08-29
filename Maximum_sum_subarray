@@ -11,8 +11,9 @@ int main()
     int arun= bruteforce(arr);
     int aruna =bettermethod(arr);
     int arunaruna = best(arr);
-    cout << arunaruna;
-    cout <<aruna;
+    cout << arunaruna << " result by best method " << endl;
+    cout <<aruna << " result by bettermethod " << endl;
+    cout << arun << " result by bruteforce " << endl;
     return 0;
 }
 int bruteforce (int arr[])
