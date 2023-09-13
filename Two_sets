@@ -1,0 +1,116 @@
+     
+/*
+    Time limit: 1.00 s Memory limit: 512 MB 
+
+Your task is to divide the numbers 1,2,…,n
+into two sets of equal sum.
+
+Input
+
+The only input line contains an integer n.
+
+Output
+
+Print "YES", if the division is possible, and "NO" otherwise.
+
+After this, if the division is possible, print an example of how to create the sets. First, print the number of elements in the first set followed by the elements themselves in a separate line, and then, print the second set in a similar way.
+
+Constraints
+
+    1≤n≤106
+
+
+Example 1
+
+Input:
+7
+
+Output:
+YES
+4
+1 2 4 7
+3
+3 5 6
+
+Example 2
+
+Input:
+6
+
+Output:
+NO
+
+
+
+
+*/
+
+
+
+#include <iostream>
+#include <vector>
+using namespace std;
+int main ()
+{
+	int target, wsum, n;
+	cin >>n;
+	int j=1;
+	vector <int> vect1;
+	vector <int> vect2;
+	int arr[n];
+	for (int i=0 ; i<n;i++)
+	{
+		arr[i] = j++;
+	}
+	target = (n*(n+1))/2;
+	wsum = target /2;
+	if (target%2 == 0)
+	{
+		cout << "YES" << endl;
+		if (n%2==0)
+		{
+			cout<<n/2<<"\n";
+			for(int i=1;i<=n/2;i+=2) cout<<i<<" ";
+			for(int i=n;i>n/2;i-=2) cout<<i<<" ";
+			cout<<"\n"<<n/2<<"\n";
+			for(int i=2;i<=n/2;i+=2) cout<<i<<" ";
+			for(int i=n-1;i>n/2;i-=2) cout<<i<<" ";
+			cout<<"\n";
+		}
+		else
+		{
+			for (int i=0 ;i<n/2 ;i++)
+			{
+				if (i %2 == 0)
+				{
+					vect1.push_back(arr[i]);
+					vect1.push_back(arr[n-2-i]);
+				}
+				else
+				{
+					vect2.push_back(arr[i]);
+					vect2.push_back(arr[n-2-i]);
+				}
+			}
+			vect2.push_back(n);
+			cout << vect2.size() << endl;
+			for (auto itr = vect2.begin() ; itr != vect2.end() ;itr++)
+			{
+				cout << *itr<< " " ;
+			}
+			cout << endl;
+			cout << vect1.size() << endl;
+			for (auto itr = vect1.begin() ; itr != vect1.end() ;itr++)
+			{
+				cout << *itr <<" " ;
+			}
+			cout << endl;
+		}
+	}
+	else
+	{
+		cout << "NO" << endl;
+		return 0;
+	}
+	return 0;
+}
